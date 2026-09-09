@@ -1,3 +1,3 @@
 Trigger Vercel production deployment after Meta Pixel/Supabase configuration.
-2026-09-09T13:10:00-03:00
-Build script fixed to load the production patch files directly from the immutable GitHub commit.
+2026-09-09T15:24:00-03:00
+Retry after Vercel free deployment quota error.
