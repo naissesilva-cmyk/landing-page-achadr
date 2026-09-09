@@ -3,6 +3,8 @@ set -euo pipefail
 
 ARCHIVE="achadr-landing-page_revisado-SS4C_2026-08-31.zip"
 WORKDIR=".achadr-source"
+PATCH_COMMIT="c8d37c5a679a4e05ebb2548e5bbcd3b79f9d8f8e"
+RAW_BASE="https://raw.githubusercontent.com/naissesilva-cmyk/landing-page-achadr/${PATCH_COMMIT}/overrides"
 
 rm -rf "$WORKDIR" app public
 mkdir -p "$WORKDIR"
@@ -12,11 +14,11 @@ SOURCE="$WORKDIR/achadr-landing-page"
 cp -R "$SOURCE/app" ./app
 cp -R "$SOURCE/public" ./public
 
-cp overrides/layout.tsx app/layout.tsx
-cp overrides/InterestForm.tsx app/components/InterestForm.tsx
-cp overrides/MetaPixelConsent.tsx app/components/MetaPixelConsent.tsx
-cp overrides/interesse-route.ts app/api/interesse/route.ts
-cp overrides/privacidade-page.tsx app/privacidade/page.tsx
-cp overrides/meta-pixel.css app/meta-pixel.css
+curl -fsSL "$RAW_BASE/layout.tsx" -o app/layout.tsx
+curl -fsSL "$RAW_BASE/InterestForm.tsx" -o app/components/InterestForm.tsx
+curl -fsSL "$RAW_BASE/MetaPixelConsent.tsx" -o app/components/MetaPixelConsent.tsx
+curl -fsSL "$RAW_BASE/interesse-route.ts" -o app/api/interesse/route.ts
+curl -fsSL "$RAW_BASE/privacidade-page.tsx" -o app/privacidade/page.tsx
+curl -fsSL "$RAW_BASE/meta-pixel.css" -o app/meta-pixel.css
 
 npx next build
