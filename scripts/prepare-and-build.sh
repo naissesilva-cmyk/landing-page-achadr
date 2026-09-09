@@ -26,13 +26,13 @@ const fs = require('fs');
 const path = 'app/components/MetaPixelConsent.tsx';
 let content = fs.readFileSync(path, 'utf8');
 content = content
-  .replace('Cookies e mensuração', 'Privacidade e cookies')
+  .replace('Cookies e mensuração', 'Preferências de cookies')
   .replace(
     'Usamos tecnologias de mensuração da Meta para entender o desempenho das campanhas.\n          Elas só são ativadas com sua autorização. Veja nossa ',
-    'Usamos cookies opcionais para entender como as pessoas chegam e utilizam o site.\n          Você pode aceitar ou continuar sem eles. Veja nossa '
+    'Usamos cookies essenciais para o funcionamento do site e cookies opcionais para análise de uso.\n          Você pode aceitar todos ou manter apenas os essenciais. Veja nossa '
   )
-  .replace('Recusar', 'Continuar sem opcionais')
-  .replace('Aceitar', 'Aceitar cookies');
+  .replace('Recusar', 'Somente essenciais')
+  .replace('Aceitar', 'Aceitar todos');
 fs.writeFileSync(path, content);
 NODE
 
